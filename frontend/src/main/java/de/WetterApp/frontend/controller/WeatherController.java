@@ -3,35 +3,30 @@ package de.WetterApp.frontend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import de.WetterApp.backend.model.Weather;
-import de.WetterApp.backend.service.WeatherService;
+import de.WetterApp.frontend.model.Weather;
+import de.WetterApp.frontend.service.BackendService;
 
 import java.util.List;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/places")
 public class WeatherController {
-    @Autowired
-    private WeatherService weatherService;
+    private BackendService backendService;
 
-    @GetMapping("/all")
-    public List<Weather> getAllPlaces() {
-        return weatherService.getAllPlaces();
+    public WeatherController(BackendService backendService) {
+        this.backendService = backendService;
     }
 
-    @GetMapping("/{id}")
-    public Weather getPlaceById(@PathVariable Long id) {
-        return weatherService.getPlaceById(id);
+    @GetMapping("/items")
+    public List<Weather> Weathers() {
+        return backendService.getWeathers();
     }
 
-    @PostMapping("/add")
-    public Weather addPlace(@RequestBody Weather weather) {
-        return weatherService.savePlace(weather);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public void deletePlace(@PathVariable Long id) {
-        weatherService.deletePlace(id);
+    @GetMapping("/create")
+    public Weather createWeather() {
+        return backendService.createWeather(new Weather("Test", "Test"));
     }
 }
-

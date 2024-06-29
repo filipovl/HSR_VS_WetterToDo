@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wetter ToDo-Liste</title>
+</head>
+<body>
+    <h1>Wetter ToDo-Liste</h1>
+    
+    <form action="#" th:action="@{/search}" method="get">
+        <label for="ort">Ort eingeben:</label>
+        <input type="text" id="ort" name="ort" required>
+        <button type="submit">Suchen</button>
+    </form>
+    
+    <ul>
+        <li th:each="eintrag : ${eintraege}">
+            <span th:text="${eintrag.ort} + ' - ' + ${eintrag.temperatur}"></span>
+            <form th:action="@{/delete}" method="post">
+                <input type="hidden" name="id" th:value="${eintrag.id}">
+                <button type="submit">Löschen</button>
+            </form>
+        </li>
+    </ul>
+</body>
+</html>

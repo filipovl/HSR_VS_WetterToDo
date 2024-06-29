@@ -1,0 +1,5 @@
+de/WetterApp/backend/service/WeatherService.class
+de/WetterApp/backend/controller/WeatherController.class
+de/WetterApp/backend/BackendApplication.class
+de/WetterApp/backend/model/Weather.class
+de/WetterApp/backend/repository/WeatherRepository.class

@@ -1,0 +1,5 @@
+/workspaces/HSR_VS_WetterToDo/backend/src/main/java/de/WetterApp/backend/repository/WeatherRepository.java
+/workspaces/HSR_VS_WetterToDo/backend/src/main/java/de/WetterApp/backend/controller/WeatherController.java
+/workspaces/HSR_VS_WetterToDo/backend/src/main/java/de/WetterApp/backend/BackendApplication.java
+/workspaces/HSR_VS_WetterToDo/backend/src/main/java/de/WetterApp/backend/service/WeatherService.java
+/workspaces/HSR_VS_WetterToDo/backend/src/main/java/de/WetterApp/backend/model/Weather.java

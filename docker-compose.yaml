@@ -1,27 +1,31 @@
-version: '3.8'
-
+version: '3.1'
 services:
-  postgres:
-    image: postgres:13
-    environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 12345678
-    ports:
-      - "5432:5432"
-
-  backend:
-    build: ./backend
-    ports:
-      - "8080:8080"
-    depends_on:
-      - postgres
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 12345678
-
   frontend:
-    build: ./frontend
+    image: frontend:0.1 
     ports:
       - "8081:8081"
+    networks:
+      - todo-network
+    environment:
+      - BACKEND_URL=backend
+
+  todo-backend:
+    image: backend:0.1 
+    ports:
+      - "8080:8080"
+    networks:
+      - todo-network
+    depends_on:
+      - database
+    environment:
+      - DATABASE_URL=database
+
+  todo-database:
+    image: database:0.1 
+    ports:
+      - "5432:5432"
+    networks:
+      - todo-network
+
+networks:
+  todo-network: {}
